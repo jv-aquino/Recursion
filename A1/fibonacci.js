@@ -10,8 +10,16 @@ const fibs = (n) => {
 }
 
 const fibbonacci = (n) => {
-  return (n <= 2) ? n - 1 : fibbonacci(n - 1) + fibbonacci(n - 2);
+  if (n == 1) {
+    return [0];
+  }
+  else if (n == 2) {
+    return [0, 1]; 
+  }
+  else {
+    return fibbonacci(n - 1).concat([fibbonacci(n - 1).pop() + fibbonacci(n - 2).pop()]);
+  }
 }
 
 console.log(fibs(8)); // [0, 1, 1, 2, 3, 5, 8, 13]
-console.log(fibbonacci(8)); // 13
+console.log(fibbonacci(8)); // [0, 1, 1, 2, 3, 5, 8, 13]
